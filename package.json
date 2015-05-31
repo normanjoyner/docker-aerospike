@@ -1,0 +1,24 @@
+{
+  "name": "docker-aerospike",
+  "private": true,
+  "description": "Docker image designed to run an Aerospike cluster on ContainerShip",
+  "main": "aerospike.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/containership/docker-aerospike.git"
+  },
+  "author": "ContainerShip Developers <developers@containership.io>",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/containership/docker-aerospike/issues"
+  },
+  "homepage": "https://github.com/containership/docker-aerospike",
+  "dependencies": {
+    "async": "^1.0.0",
+    "lodash": "^3.9.1",
+    "native-dns": "^0.7.0"
+  }
+}

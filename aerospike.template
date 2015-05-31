@@ -1,0 +1,61 @@
+# Aerospike database configuration file.
+
+# This stanza must come first.
+service {
+    user root
+    group root
+    paxos-single-replica-limit AEROSPIKE_SINGLE_REPLICA_LIMIT
+    pidfile /var/run/aerospike/asd.pid
+    service-threads AEROSPIKE_SERVICE_THREADS
+    transaction-queues AEROSPIKE_TRANSACTION_QUEUES
+    transaction-threads-per-queue AEROSPIKE_TRANSACTION_THREADS_PER_QUEUE
+    proto-fd-max AEROSPIKE_FD_MAX
+}
+
+logging {
+
+    # Send log messages to stdout
+    console {
+        context any info
+    }
+}
+
+network {
+    service {
+        address any
+        port AEROSPIKE_SERVICE_PORT
+        access-address AEROSPIKE_IPADDRESS
+    }
+
+    heartbeat {
+
+        mode mesh
+        address AEROSPIKE_IPADDRESS
+        port AEROSPIKE_HEARTBEAT_PORT
+
+AEROSPIKE_MESH_ADDRESSES
+
+        interval AEROSPIKE_HEARTBEAT_INTERVAL
+        timeout AEROSPIKE_HEARTBEAT_TIMEOUT
+    }
+
+    fabric {
+        port AEROSPIKE_FABRIC_PORT
+    }
+
+    info {
+        port AEROSPIKE_INFO_PORT
+    }
+}
+
+namespace AEROSPIKE_NAMESPACE {
+    replication-factor AEROSPIKE_REPLICATION_FACTOR
+    memory-size AEROSPIKE_MEMORY_SIZE
+    default-ttl AEROSPIKE_TTL
+
+    storage-engine device {
+        file /opt/aerospike/data/AEROSPIKE_NAMESPACE.dat
+        filesize AEROSPIKE_FILESIZE
+        data-in-memory true
+    }
+}
