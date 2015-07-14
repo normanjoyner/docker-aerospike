@@ -1,6 +1,5 @@
 # Aerospike database configuration file.
 
-# This stanza must come first.
 service {
     user root
     group root
@@ -13,8 +12,6 @@ service {
 }
 
 logging {
-
-    # Send log messages to stdout
     console {
         context any info
     }
